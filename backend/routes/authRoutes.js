@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { registerUser, loginUser } = require("../controllers/authController");
+const { registerUser, loginUser } = require("../controllers/authcontroller");
 
 // ✅ Public routes — no middleware
 router.post("/register", registerUser);
