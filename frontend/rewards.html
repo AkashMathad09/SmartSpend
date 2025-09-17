@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartSpend - Rewards</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Rewards</h1>
+    <p>Collect Super Coins and Shopping Cards as rewards!</p>
+
+    <nav>
+        <a href="home.html">Home</a> |
+        <a href="transactions.html">Transactions</a> |
+        <a href="balance.html">Balance</a>
+    </nav>
+
+    <div id="rewardsList">
+        <!-- Reward items can be populated dynamically from backend -->
+    </div>
+
+    <script>
+        const token = localStorage.getItem("token");
+        if (!token) {
+            window.location.href = "index.html";
+        }
+
+        // Example rewards (later can fetch from backend)
+        const rewards = [
+            { name: "Super Coin", amount: 10 },
+            { name: "Shopping Card", amount: 5 }
+        ];
+
+        const rewardsDiv = document.getElementById("rewardsList");
+        rewards.forEach(r => {
+            const item = document.createElement("p");
+            item.innerText = `${r.name}: ${r.amount}`;
+            rewardsDiv.appendChild(item);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartSpend - Home</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>SmartSpend 💰</h1>
+        <button id="logoutBtn">Logout</button>
+    </header>
+
+    <main class="container">
+        <section class="welcome-card">
+            <h2 id="welcomeMsg">Welcome!</h2>
+            <p>Your monthly budget: <span id="budget">$0</span></p>
+            <p>Your current balance: <span id="balance">$0</span></p>
+        </section>
+
+        <section class="quick-actions">
+            <button onclick="location.href='transactions.html'">View Transactions</button>
+            <button onclick="alert('Add Expense - coming soon!')">Add Expense</button>
+            <button onclick="alert('Rewards - coming soon!')">Rewards</button>
+        </section>
+    </main>
+
+    <script>
+        const token = localStorage.getItem("token");
+        if (!token) {
+            window.location.href = "index.html";
+        }
+
+        // Display welcome message
+        fetch("http://localhost:5000/api/user/dashboard", {
+            headers: { "Authorization": `Bearer ${token}` }
+        })
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById("welcomeMessage").innerText = data.message;
+        });
+
+        // Logout
+        document.getElementById("logout").addEventListener("click", () => {
+            localStorage.removeItem("token");
+        });
+    </script>
+</body>
+</html>

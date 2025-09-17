@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartSpend - Transactions</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Transactions</h1>
+
+    <form id="transactionForm">
+        <input type="number" id="amount" placeholder="Amount" required>
+        <input type="text" id="category" placeholder="Category" required>
+        <select id="type" required>
+            <option value="expense">Expense</option>
+            <option value="income">Income</option>
+        </select>
+        <button type="submit">Add Transaction</button>
+    </form>
+
+    <h2>Transaction List</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody id="transactionTableBody"></tbody>
+    </table>
+
+    <script src="js/transactions.js"></script>
+</body>
+</html>
